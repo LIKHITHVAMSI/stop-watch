@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+    <style>
+        .clock,.b{
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content:space-evenly;
+        }
+        .clock span{
+            width:80px;
+            height:50px;
+            background-color: antiquewhite;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            cursor:pointer;
+            
+        }
+        .clock .te{
+            height: 30px;
+            background-color: rgb(99, 99, 116);
+        }
+        .b button{
+            padding: 15px;
+            border-radius: 20px;
+            border-style: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="display: flex;flex-direction:column;justify-content:center;height: 90vh;background-color: aquamarine;">
+    <h2 style="text-align:center;padding-bottom: 20px;">Stop Watch</h2>
+    <div class="clock">
+        <div>
+            <span id="hours">00</span>
+            <span class="te">Hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span class="te">Minutes</span>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <span class="te">Seconds</span>
+        </div>
+
+    </div>
+    <div class="b">
+        <button><span id="start">start</span></button>
+        <button id="reset"><span>reset</span></button>
+        <button><span id="stop">stop</span></button>
+    </div>
+    <script>
+        let interval;
+            let a=document.getElementById("reset").onclick = function(){
+                let q=document.getElementById("hours");
+                q.innerHTML="00";
+                document.getElementById("minutes").innerHTML="00";
+                document.getElementById("seconds").innerHTML="00";
+            }
+            let b=document.getElementById("start").onclick=function we(){interval=setInterval(e,1000);}
+            function e(){
+                let w=document.getElementById("seconds").innerText;
+                w=Number(w);
+                if(w<9){
+                    w="0"+(w+1);
+                    document.getElementById("seconds").innerHTML=w;
+                }
+                else if(w>=9 & w<59){
+                    w=w+1;
+                    document.getElementById("seconds").innerHTML=w;
+                }
+                else{
+                    w="00";
+                    document.getElementById("seconds").innerHTML=w;
+                    let r=f();
+                    function f(){
+                        let e=document.getElementById("minutes").innerText;
+                        e=Number(e);
+                        if(e<9){
+                            e="0"+(e+1);
+                            document.getElementById("minutes").innerHTML=e;
+                        }
+                        else if(e>=9 & e<59){
+                            e=e+1;
+                            document.getElementById("minutes").innerHTML=e;
+                        }
+                        else
+                        {
+                            e="00";
+                            document.getElementById("minutes").innerHTML=e;
+                            let y=u();
+                            function u(){
+                            let a=document.getElementById("hours").innerText;
+                            a=Number(a);
+                            if(a<9){
+                            a="0"+(a+1);
+                            document.getElementById("hours").innerHTML=a;
+                            }
+                            else if(a>=9 & a<23){
+                            a=a+1;
+                            document.getElementById("hours").innerHTML=a;
+                            }
+                            else{
+                                a="00";
+                                document.getElementById("hours").innerHTML=a;
+                            }
+                        }
+                        }
+                    }
+                }
+                
+            };
+            let stop=document.getElementById("stop").onclick = function dd(){
+                clearInterval(interval);
+            }
+
+    </script>
+</body>
+</html>
